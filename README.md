@@ -1,6 +1,7 @@
 # NEXT JIDODA
 
 2014-02-HTML5 project
+>포트번호 : 3000
 
 - Mobile Client ('/')
   - 모바일 클라이언트는 서버와 통신함

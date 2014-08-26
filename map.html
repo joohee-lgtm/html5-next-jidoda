@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+  </head>
+  <body>
+    지도 페이지
+    <ul>
+    </ul>
+    <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io("http://127.0.0.1:3000");
+      document.addEventListener('DOMContentLoaded', function(){
+        socket.emit('map opened', {});
+      });
+
+      socket.on('initial data', function(dataList){
+        for(var i=0; i<dataList.length ; i++){
+          syncUser(dataList[i]);
+        }
+      });
+
+      socket.on('sync data',function(data){
+        console.log(data);
+        syncUser(data);
+      });
+
+      socket.on('remove data',function(data){
+        console.log(data);
+        removeUser(data);
+      });
+
+      function syncUser(data){
+        var target = document.getElementById(data.did);
+        if(target != null){
+          target.parentNode.removeChild(target);
+        }
+
+        var userList = document.getElementsByTagName("ul")[0];
+        var dataInfo = "<li id=\"" + data.did + "\">" + JSON.stringify(data) + "</li>";
+        userList.insertAdjacentHTML('afterbegin', dataInfo);
+      }
+
+      function removeUser(data){
+        var target = document.getElementById(data.did);
+        if(target != null){
+          target.parentNode.removeChild(target);
+        }
+      }
+
+    </script>
+  </body>
+</html>

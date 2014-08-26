@@ -4,10 +4,10 @@
 
 - Mobile Client ('/')
   - 모바일 클라이언트는 서버와 통신함
-  - 서버로 자신의 상태 정보를 보내줌
+  - 서버로 자신의 상태 정보를 보내줌 (to server)
     - 보내는 요청 : update user, remove user (from server)
 - Map Client ('/map')
-  - 맵 클라이언트는 서버와 통신함
+  - 맵 클라이언트는 서버와 통신함(to server)
   - 서버로부터 각 클라이언트들의 상태 정보를 받음
     - 보내는 요청 : map opened
     - 받는 요청 : initial data, sync data, remove data (from server)
